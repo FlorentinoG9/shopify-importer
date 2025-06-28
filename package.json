@@ -1,0 +1,31 @@
+{
+  "name": "shadcn-ui-monorepo",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "build": "turbo build",
+    "dev": "turbo dev",
+    "lint": "biome format --write",
+    "lint:fix": "pnpm exec biome lint --write"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.0.6",
+    "@workspace/tsconfig": "workspace:*",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.1.2",
+    "prettier": "^3.6.2",
+    "turbo": "^2.5.4",
+    "typescript": "5.8.3",
+    "ultracite": "5.0.26"
+  },
+  "packageManager": "pnpm@10.12.4",
+  "engines": {
+    "node": ">=20"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx,json,jsonc,css,scss,md,mdx}": [
+      "biome format --write",
+      "npx ultracite format"
+    ]
+  }
+}
