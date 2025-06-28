@@ -10,6 +10,7 @@
   },
   "javascript": {
     "formatter": {
+      "lineWidth": 100,
       "semicolons": "asNeeded"
     }
   }

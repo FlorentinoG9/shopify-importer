@@ -1,17 +1,6 @@
-import { Geist, Geist_Mono } from 'next/font/google'
-
 import '@workspace/ui/globals.css'
+import { fontMono, fontSans } from '@/components/fonts'
 import { Providers } from '@/components/providers'
-
-const fontSans = Geist({
-  subsets: ['latin'],
-  variable: '--font-sans',
-})
-
-const fontMono = Geist_Mono({
-  subsets: ['latin'],
-  variable: '--font-mono',
-})
 
 type Props = Readonly<{
   children: React.ReactNode
@@ -20,9 +9,7 @@ type Props = Readonly<{
 export default function RootLayout({ children }: Props) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body
-        className={`${fontSans.variable} ${fontMono.variable} font-sans antialiased `}
-      >
+      <body className={`${fontSans.variable} ${fontMono.variable} font-sans antialiased`}>
         <Providers>{children}</Providers>
       </body>
     </html>

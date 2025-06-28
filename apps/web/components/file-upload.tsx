@@ -61,11 +61,7 @@ const getFileIcon = (file: { file: File | { type: string; name: string } }) => {
   ) {
     return <FileArchiveIcon className="size-4 opacity-60" />
   }
-  if (
-    fileType.includes('excel') ||
-    fileName.endsWith('.xls') ||
-    fileName.endsWith('.xlsx')
-  ) {
+  if (fileType.includes('excel') || fileName.endsWith('.xls') || fileName.endsWith('.xlsx')) {
     return <FileSpreadsheetIcon className="size-4 opacity-60" />
   }
   if (fileType.includes('video/')) {
@@ -116,11 +112,7 @@ export function UploadFiles() {
         onDrop={handleDrop}
         type="button"
       >
-        <input
-          {...getInputProps()}
-          aria-label="Upload files"
-          className="sr-only"
-        />
+        <input {...getInputProps()} aria-label="Upload files" className="sr-only" />
 
         <div className="flex flex-col items-center justify-center text-center">
           <div
@@ -130,9 +122,7 @@ export function UploadFiles() {
             <FileUpIcon className="size-4 opacity-60" />
           </div>
           <p className="mb-1.5 font-medium text-sm">Upload files</p>
-          <p className="mb-2 text-muted-foreground text-xs">
-            Drag & drop or click to browse
-          </p>
+          <p className="mb-2 text-muted-foreground text-xs">Drag & drop or click to browse</p>
           <div className="flex flex-wrap justify-center gap-1 text-muted-foreground/70 text-xs">
             <span>All files</span>
             <span>∙</span>
@@ -144,10 +134,7 @@ export function UploadFiles() {
       </button>
 
       {errors.length > 0 && (
-        <div
-          className="flex items-center gap-1 text-destructive text-xs"
-          role="alert"
-        >
+        <div className="flex items-center gap-1 text-destructive text-xs" role="alert">
           <AlertCircleIcon className="size-3 shrink-0" />
           <span>{errors[0]}</span>
         </div>
@@ -167,16 +154,10 @@ export function UploadFiles() {
                 </div>
                 <div className="flex min-w-0 flex-col gap-0.5">
                   <p className="truncate font-medium text-[13px]">
-                    {file.file instanceof File
-                      ? file.file.name
-                      : file.file.name}
+                    {file.file instanceof File ? file.file.name : file.file.name}
                   </p>
                   <p className="text-muted-foreground text-xs">
-                    {formatBytes(
-                      file.file instanceof File
-                        ? file.file.size
-                        : file.file.size
-                    )}
+                    {formatBytes(file.file instanceof File ? file.file.size : file.file.size)}
                   </p>
                 </div>
               </div>

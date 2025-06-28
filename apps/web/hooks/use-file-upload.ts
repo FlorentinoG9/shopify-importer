@@ -113,9 +113,7 @@ export const useFileUpload = (
       }
 
       const { type, extension } = getFileProperties(file)
-      const acceptedTypes = accept
-        .split(',')
-        .map((acceptType) => acceptType.trim())
+      const acceptedTypes = accept.split(',').map((acceptType) => acceptType.trim())
 
       const isAccepted = acceptedTypes.some((acceptedType) => {
         if (acceptedType.startsWith('.')) {
@@ -146,11 +144,7 @@ export const useFileUpload = (
 
   const validateFilesLimit = useCallback(
     (newFilesCount: number): string | null => {
-      if (
-        multiple &&
-        maxFiles !== 10 &&
-        state.files.length + newFilesCount > maxFiles
-      ) {
+      if (multiple && maxFiles !== 10 && state.files.length + newFilesCount > maxFiles) {
         return `You can only upload a maximum of ${maxFiles} files.`
       }
       return null
@@ -166,22 +160,18 @@ export const useFileUpload = (
 
       return state.files.some(
         (existingFile) =>
-          existingFile.file.name === file.name &&
-          existingFile.file.size === file.size
+          existingFile.file.name === file.name && existingFile.file.size === file.size
       )
     },
     [multiple, state.files]
   )
 
-  const createPreview = useCallback(
-    (file: File | FileMetadata): string | undefined => {
-      if (file instanceof File) {
-        return URL.createObjectURL(file)
-      }
-      return file.url
-    },
-    []
-  )
+  const createPreview = useCallback((file: File | FileMetadata): string | undefined => {
+    if (file instanceof File) {
+      return URL.createObjectURL(file)
+    }
+    return file.url
+  }, [])
 
   const generateUniqueId = useCallback((file: File | FileMetadata): string => {
     if (file instanceof File) {
@@ -218,9 +208,7 @@ export const useFileUpload = (
         onFilesAdded?.(validFiles)
 
         setState((prev) => {
-          const updatedFiles = multiple
-            ? [...prev.files, ...validFiles]
-            : validFiles
+          const updatedFiles = multiple ? [...prev.files, ...validFiles] : validFiles
           onFilesChange?.(updatedFiles)
           return {
             ...prev,
@@ -248,11 +236,7 @@ export const useFileUpload = (
     setState((prev) => {
       // Clean up object URLs
       for (const file of prev.files) {
-        if (
-          file.preview &&
-          file.file instanceof File &&
-          file.file.type.startsWith('image/')
-        ) {
+        if (file.preview && file.file instanceof File && file.file.type.startsWith('image/')) {
           URL.revokeObjectURL(file.preview)
         }
       }
