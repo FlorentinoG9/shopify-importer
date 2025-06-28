@@ -3,6 +3,14 @@
   "extends": ["ultracite"],
   "linter": {
     "rules": {
+      "suspicious": {
+        "noConsole": {
+          "level": "error",
+          "options": {
+            "allow": ["warn", "error", "info"]
+          }
+        }
+      },
       "nursery": {
         "noUnknownAtRule": "off"
       }

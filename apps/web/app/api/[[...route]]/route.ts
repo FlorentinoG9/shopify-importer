@@ -1,12 +1,6 @@
-import { Hono } from 'hono'
-import { handle } from 'hono/vercel'
-import { upload } from './upload'
+import { api, handle } from '@workspace/api'
 
 export const runtime = 'edge'
 
-const app = new Hono().basePath('/api')
-
-app.route('/upload', upload)
-
-export const GET = handle(app)
-export const POST = handle(app)
+export const GET = handle(api)
+export const POST = handle(api)
