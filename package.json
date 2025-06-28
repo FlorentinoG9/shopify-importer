@@ -8,6 +8,10 @@
     "lint": "biome format --write",
     "lint:fix": "pnpm exec biome lint --write"
   },
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
   "devDependencies": {
     "@biomejs/biome": "2.0.6",
     "@workspace/tsconfig": "workspace:*",
